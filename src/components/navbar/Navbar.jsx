@@ -2,8 +2,7 @@ import React from "react";
 
 function Navbar() {
   return (
-    <div>
-      <nav class="bg-white shadow md:max-h-screen z-20">
+      <nav class="bg-white shadow lg-h-screen z-20">
         <div class="container mx-auto px-6 py-3 md:flex md:justify-between md:items-center">
           <div class="flex justify-between items-center">
             <div>
@@ -34,7 +33,7 @@ function Navbar() {
 
           {/* <!-- Mobile Menu open: "block", Menu closed: "hidden" --> */}
           <div class="md:flex  items-center">
-            <div class="flex flex-col md:flex-row md:mx-6">
+            <div class="flex flex-col md:flex-row md:mx-6 ">
               <a
                 class="my-1 text-sm text-gray-900 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
                 href="#"
@@ -84,7 +83,7 @@ function Navbar() {
           </div>
         </div>
       </nav>
-    </div>
+    
   );
 }
 
