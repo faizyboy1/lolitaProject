@@ -4,7 +4,7 @@ import HeroImg from "../../img/hero-img.jpg";
 function header() {
   return (
     <section class="bg-black py-20 lg:py-28">
-      {/* <!-- Start Hero Block --> */}
+      
       <div class="container mx-auto px-5 text-center">
         <div class="mb-16">
           <div class="space-y-4 mb-12">
