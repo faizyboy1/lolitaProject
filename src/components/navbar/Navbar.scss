@@ -1,0 +1,65 @@
+//MixIN
+// @import '../../mixins/Mixins';
+@mixin NavLink {
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 0 1rem;
+    height: 100%;
+    font-size: 1.6rem;
+   
+}
+.nav{
+    // height: 60px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    width: 100%;
+    position: fixed;
+    padding: 1rem 2rem;
+    z-index: 100; 
+   
+    
+
+    &__logo{
+        font-style: italic;
+        @include NavLink()
+
+    }
+    &__itemContainer{
+       
+        display: flex;
+        justify-content: space-evenly;
+        margin-right: -30rem;
+      
+        &-links{
+            @include NavLink();
+          
+        }
+
+    }
+    &__buttonContainer{
+        display: flex;
+        align-items: center;
+        margin-right: 2.4rem;
+        
+    }
+
+
+}
+@media(max-width:767px){
+    .nav{
+        &__itemContainer{
+           
+            display: none;
+        }
+        &__buttonContainer{
+           
+                display: none;
+        }
+    }
+   
+   
+}

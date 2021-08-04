@@ -1,0 +1,24 @@
+@import '../utilities/Base.scss';
+//Button Link Utilities
+// font color
+.primary{
+    color: $color-white;
+    background:$color-primary;
+
+}
+.secondary{
+    color:$color-primary;
+    background:$color-secondry;
+}
+//size
+.big{
+    padding: 1.6rem 4rem;
+    font-size: 2rem;
+}
+.small{
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+}
+.cutomWidth{
+    max-width: 16rem;
+}

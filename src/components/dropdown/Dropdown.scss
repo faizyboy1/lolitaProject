@@ -1,0 +1,115 @@
+@import '../../utilities/Base.scss';
+.dropdown{
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: $color-secondry;
+    z-index: 999;
+    display: grid;
+    align-items: center;
+    transition: .3s ease-in-out;
+    transform: translateY(-100%);
+    &__icon{
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        cursor: pointer;
+        
+    }
+    &__wrapper{
+       
+        &-menu{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            text-align: center;   
+            margin-bottom: 10rem;        
+        }
+        &-link{
+            &:link,
+            &:visited{
+                text-decoration: none;
+                display: block;
+                margin-bottom: 1rem;
+                padding: 1rem;
+                font-size: 2rem;
+                color: $color-white;
+                transition: .4s all;    
+                background-image:linear-gradient( 120deg,
+                transparent 0%,
+                transparent 50%,
+                $color-primary 50%,
+                ) ;
+                background-size: 240%;
+            }
+           
+            &:hover{
+                color: $color-white;
+                background-position: 100%;
+                transform: translateX(1rem);
+            }
+        }
+        &-btn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+    }
+
+
+}
+.dropdown[animation="1"]{
+    animation: drop-down 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+// animation through React state.
+.dropdown[animation="0"]{
+    animation: drop-up 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+// @-webkit-keyframes drop-down {
+//     0% {
+//       -webkit-transform: translateY(-100%);
+//               transform: translateY(-100%);
+//     }
+//     100% {
+//       -webkit-transform: translateY(0);
+//               transform: translateY(0);
+//     }
+//   }
+  @keyframes drop-down {
+    0% {
+      -webkit-transform: translateY(-100%);
+              transform: translateY(-100%);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+    }
+  }
+
+
+//   @-webkit-keyframes drop-up {
+//     0% {
+//         -webkit-transform: translateY(0);
+//               transform: translateY(0);      
+//     }
+//     100% {
+//         -webkit-transform: translateY(-100%);
+//         transform: translateY(-100%);
+//     }
+//   }
+  @keyframes drop-up {
+    0% {
+        -webkit-transform: translateY(0);
+              transform: translateY(0);      
+    }
+    
+    100% {
+        -webkit-transform: translateY(-100%);
+              transform: translateY(-100%);      
+    }
+  }

@@ -1,37 +1,85 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import Slider from "../slider/Slider";
+import { IoMdArrowRoundForward } from "react-icons/io";
+import { IoArrowForward, IoArrowBack } from "react-icons/io5";
 import HeroImg from "../../img/hero-img.jpg";
 
-function header() {
+const Header = (props) => {
+  const { slides } = props;
+  const [current, setCurrent] = useState(0);
+  const length = slides.length;
+  const timeout = useRef(null);
+  // useEffect(() => {
+  //   const nextSlide = () => {
+  //     setCurrent(current === length - 1 ? 0 : current + 1);
+  //   };
+  //   timeout.current = setInterval(nextSlide, 5000);
+  //   return function () {
+  //     if (timeout.current) {
+  //       clearTimeout(timeout.current);
+  //     }
+  //   };
+  // }, [current, length]);
+  const nextSlide = () => {
+    setCurrent(current === length - 1 ? 0 : current + 1);
+  };
+  const prevSlide = () => {
+    setCurrent(current === 0 ? length - 1 : current - 1);
+  };
+
   return (
-    <section class="bg-black py-20 lg:py-28">
+    <section className="bg-black py-20 lg:py-28">
       {/* <!-- Start Hero Block --> */}
-      <div class="container mx-auto px-5 text-center">
-        <div class="mb-16">
-          <div class="space-y-4 mb-12">
-            <h4 class="text-2xl sm:text-3xl font-semibold text-white">
-              Phantom 4PRO V2.0
-            </h4>
-            <h1 class="text-5xl sm:text-7xl font-bold  text-white">
-              Visionary intelligence
-            </h1>
-            <p class="sm:w-3/4 lg:w-2/4 xl:w-96 mx-auto text-lg sm:text-xl text-gray-500">
-              Free HTML Single Product eCommerce langing page template
-            </p>
-          </div>
-          {/* Button On hero Section */}
-          {/* <a
-            href="#0"
-            class="px-12 py-4 bg-blue-800 hover:bg-blue-900 transition duration-300 ease-in-out shadow hover:shadow-lg transform hover:scale-110 text-white font-semibold text-lg rounded-full inline-block"
-          >
-            Buy now
-          </a> */}
-        </div>
-        <img
-          class="mx-auto xl:max-w-screen-2xl mb-28"
-          src={HeroImg}
-          alt="Gym"
-        />
-        <div class="space-y-12">
+
+      <div className="container mx-auto px-5 text-center">
+        {slides.map((slide, index) => {
+          return (
+            <div key={slide.id}>
+              {index === current && (
+                <div>
+                  <div >
+                    <img
+                      className="mx-auto xl:max-w-screen-2xl w-full mb-4"
+                      src={slide.image}
+                      alt={slide.alt}
+                    />
+                    <div className="flex absolute bottom-52 sm:-bottom-2 md:-bottom-24 lg:-bottom-72 xl:-bottom-76 right-4 xl:right-12 z-10" >
+                      <Slider
+                        className="h-4 w-4"
+                        onClick={prevSlide}
+                        icon={<IoArrowBack className="h-4 md:h-8 w-4 md:w-8" />}
+                      />
+                      <Slider
+                        onClick={nextSlide}
+                        icon={<IoArrowForward className="h-4 md:h-8 w-4 md:w-8" />}
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="mb-16">
+                    <div className="space-y-4 mb-12">
+                      <h4 className="text-2xl sm:text-3xl font-semibold text-white">
+                        {slide.lable}
+                      </h4>
+                      <h1 className="text-5xl sm:text-7xl font-bold  text-white">
+                        {slide.title}
+                      </h1>
+                    </div>
+                    {/* Button On hero Section */}
+                    <a
+                      href={slide.path}
+                      className="px-12 py-4 bg-blue-800 hover:bg-blue-900 transition duration-300 ease-in-out shadow hover:shadow-lg transform hover:scale-110 text-white font-semibold text-lg rounded-full inline-block"
+                    >
+                      Buy now
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
+
+        {/* <div className="space-y-12">
           <p class="lg:w-3/5 mx-auto text-xl sm:text-3xl font-semibold text-gray-600">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet
             obcaecati perferendis voluptas quasi quidem natus error
@@ -99,11 +147,11 @@ function header() {
               </span>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       {/* <!-- End Hero Block --> */}
     </section>
   );
-}
+};
 
-export default header;
+export default Header;

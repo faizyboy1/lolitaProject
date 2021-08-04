@@ -1,0 +1,20 @@
+@import '../../utilities/Base.scss';
+.slider{
+    // height: 5rem;
+    // width: 5rem;
+    cursor: pointer;
+    // background: $color-primary;
+    border-radius: 5rem;
+    color: $color-white;
+    padding: 1rem;
+    margin-right: 1rem;
+    user-select: none;
+    transition: .3s all;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    &:hover{
+        background: $color-secondry;
+        transform: scale(1.05);
+    }
+}
